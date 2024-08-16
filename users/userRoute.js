@@ -90,7 +90,8 @@ router.post('/login', async(req,res)=>{
     }
      const token = jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET)
      res.cookie('token',token,{httpOnly:true,secure:true,sameSite:'Strict'})
-    res.redirect('/home')
+    // res.redirect('/home')
+    res.send('login successful')
    
 }catch(err){console.error(err)}
 })
