@@ -26,12 +26,12 @@ const Auth = (req,res,next)=>{
   }
 
 router.get('/signup',(req,res)=>{
-    res.render('signup')
+    // res.render('signup')
 })
 router.get('/home',Auth,(req,res)=>{
     
     try{
-    res.render('Home')}catch(error){
+    /*res.render('Home')*/}catch(error){
         res.redirect('/login')
     }
 })
@@ -43,12 +43,13 @@ router.get('/admin',(req,res)=>{
     const user = jwt.verify(token,process.env.JWT_SECRET)
     if('admin'.includes(user.role)){
         req.user =user
-        res.render('admin')
+        // res.render('admin')
     }else{
         res.status(403).send('Access Denied, You are restricted from this end')
     }
 })
-router.post('/signup',async (req,res)=>{
+
+router.post('/register',async (req,res)=>{
 try{
 const {name, password,email } = req.body;
 if (!name || !password ||!email) return res.status(400).send('Missing username or password');
@@ -70,7 +71,8 @@ res.status(400).send(err.message);
     
 })
 router.get('/login',(req,res)=>{
-    res.render('login')
+    // res.render('login')
+    res.send('home')
 })
 
 router.post('/login', async(req,res)=>{
