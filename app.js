@@ -39,7 +39,7 @@ mongoose.connect(MongoDburl,{useNewUrlParser:true,useUnifiedTopology:true})
     .then(()=>(console.log('Succesfully connected to the database')))
     .catch((err)=>console.log(err))
     
-app.listen(PORT,(req,res)=>{
+app.listen(PORT, (req,res)=>{
      console.log(`Listening for request at port ${PORT}`)
     })    
 app.use(router)
